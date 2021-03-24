@@ -1,10 +1,11 @@
-const util = require('util');  //supportsthe internal api
+const util = require('util');  //supports the internal api
 const fs = require('fs');  //for reading and writing the file
 
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 
+const uuid = require('uuid/v1'); // generate the unique
 
 //the data structure
 class store {
@@ -13,7 +14,7 @@ class store {
         return readFile('db/db.json', 'utf8');
     }
 
-    write() {
+    write(note) {
         return writeFile('db/db.json', JSON.stringify(note));
     }
 
@@ -21,12 +22,14 @@ class store {
 
     getNote() {
         //first read the file then write it
-        return this.read().then((note) => {
+        return this.read().then((notes) => {
             let parsedNote;
 
             try{
-                [].concat(JSON.parse(note));
-            } catch (err) {      //if no array exist with data send back the empty array
+                //concat method combine 2 arrays and return a new array.
+                parsedNote= [].concat(JSON.parse(notes));
+            } catch (err) {     
+                //if no array exist with data send back the empty array
                 parsedNote = [];
             }
 
@@ -40,7 +43,7 @@ class store {
         const {title, description} = note;
 
         if(!title || !description) {
-             throw new Error("Note please fill the title and description");
+             throw new Error("Please fill the title and description");
         }
 
         //add id to new note with this package
