@@ -5,7 +5,7 @@ const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 
-const uuid = require('uuid/v1'); // generate the unique
+const uuidv1 = require('uuid'); // generate the unique id
 
 //the data structure
 class store {
@@ -20,7 +20,7 @@ class store {
 
 
 
-    getNote() {
+    getNotes() {
         //first read the file then write it
         return this.read().then((notes) => {
             let parsedNote;
@@ -40,24 +40,28 @@ class store {
 
 
     addNote(note) {
-        const {title, description} = note;
+        const {title, text} = note;
 
-        if(!title || !description) {
-             throw new Error("Please fill the title and description");
+        if(!title || !text) {
+             throw new Error("Please fill the title and text");
         }
 
         //add id to new note with this package
-        const newNote = {title, description,id: uuidv1() };
+        const newNote = { title, text, id: uuidv1 };
         
-        
-        return this.getNote().then((note) => [...note, ]).then =((updatedNote) => this.write(updatedNote)).then(() => newNote);
+        return this.getNotes()
+        .then((note) => [...note, ])
+        .then((updatedNotes) => this.write(updatedNotes))
+        .then(() => newNote);
 
     }
 
 
 
-    deleteNote() {
-        return this.getNote().then((note) => note.filter((note) => note.id  !== id).then((filteredNote) => this.write(filteredNote));
+    deleteNote(id) {
+        return this.getNotes()
+        .then((notes) => notes.filter((note) => note.id  !== id))
+        .then((filteredNotes) => this.write(filteredNotes));
     }
 }
 
