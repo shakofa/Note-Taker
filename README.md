@@ -8,5 +8,55 @@ Node.JS, express and uuidv1 packages need to be install to run the application.
 ## Demo
 [Click here](https://serene-lowlands-10119.herokuapp.com/notes)
 
-<img src="express.png" height="300" width="300">
+<img src="express.png" height="600" width="600">
+
+## Contributors
+Shakofa Mahmody  and UCI coding bootcamp ream who provded the fron-end code for the app.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
