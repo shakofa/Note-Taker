@@ -50,7 +50,7 @@ class store {
         const newNote = { title, text, id: uuidv1 };
         
         return this.getNotes()
-        .then((note) => [...note, ])
+        .then((notes) => [...notes, newNote ])
         .then((updatedNotes) => this.write(updatedNotes))
         .then(() => newNote);
 
