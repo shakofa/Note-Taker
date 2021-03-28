@@ -11,7 +11,7 @@ Node.JS, express and uuidv1 packages need to be install to run the application.
 <img src="express.png" height="600" width="600">
 
 ## Contributors
-Shakofa Mahmody  and UCI coding bootcamp ream who provded the fron-end code for the app.
+Shakofa Mahmody  and UCI Coding Bootcamp Team who provided the front-end code for the app.
 
 
 
